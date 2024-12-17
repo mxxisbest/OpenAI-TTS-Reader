@@ -6,17 +6,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 async function generateAndPlayTTS(text, tabId) {
     try {
-        const KEY = await chrome.storage.sync.get(['apiKey']);
-        const response = await fetch('https://gpt.liupeng.info/v1/audio/speech', {
+        //const KEY = await chrome.storage.sync.get(['apiKey']);
+        //const apiKey = KEY.apiKey;
+        const apiKey = 'sk-777770Yf0JGyJxgRmXqFQyTgWUd9GZnmi3KlvowmRWpWqrhy'
+        const response = await fetch('https://tts.liupeng.info/v1/audio/speech', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${KEY.apiKey}`,
+                'Authorization': `Bearer ${apiKey}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 model: 'tts-1',
                 input: text,
-                voice: 'alloy',
+                voice: 'zh-CN-XiaoxiaoNeural',
                 response_format: 'mp3'
             })
         });
