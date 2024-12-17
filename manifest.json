@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "OpenAI TTS Reader",
+  "version": "1.0",
+  "description": "使用OpenAI TTS API朗读选中的文本",
+  "permissions": [
+    "contextMenus",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://gpt.liupeng.info/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }
+  ]
+}
